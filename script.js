@@ -1,13 +1,17 @@
 let num1;
 let operator;
 let num2;
-var digits = ["c","?","?","%",7,8,9,"X",4,5,6,"+",1,2,3,"-",0,".","Del", "="];
+let displayVal = "";
+var digits = ["AC","%",7,8,9,"X",4,5,6,"+",1,2,3,"-",0,".","Del", "="];
 
 for(i = 0; i < digits.length; i++) {
-    var button = document.createElement("button");
-    button.innerHTML = digits[i];
-    button.className = digits[i];
-    button.addEventListener("click", console.log(digits[i]));
+    let digit = digits[i];
+    var button = document.createElement("input");
+    button.type = "button";
+    button.value = digit;
+    button.classList.add("button")
+    button.id = "b" + digit;
+    button.addEventListener("click", ()=> console.log(digit));
     var buttonContainer = document.getElementById("buttons");
     buttonContainer.appendChild(button);
   }
@@ -45,3 +49,6 @@ function operate(num1, operator, num2) {
     }
 }
 
+function updateDisplay(){
+
+}
