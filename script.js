@@ -20,7 +20,7 @@ for(i = 0; i < digits.length; i++) {
     button.id = "b" + digit;
     button.type = "button";
     button.classList.add("button")
-    button.addEventListener("click",() => updateDisplay(button));
+    button.addEventListener("click",() => updateDisplay(digit));
     var buttonContainer = document.getElementById("buttons");
     buttonContainer.appendChild(button);
   }
@@ -58,9 +58,22 @@ function operate(num1, operator, num2) {
     }
 }
 
-function updateDisplay(button){
-    displayText += button.name;
-    console.log(displayText);
-    screen.value = displayText;
+function updateDisplay(digit){
+    console.log(digit);
+    switch(digit){
+        case "AC":
+            screen.value = "";
+            displayText = "";
+            screen.value = displayText;
+            break;
+        case "Del":
+            displayText = displayText.slice(0, -1);
+            screen.value = displayText;
+            break;
+        default: 
+            displayText += digit;
+            screen.value = displayText;
+    }
+    
 }
 
