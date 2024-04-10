@@ -1,0 +1,9 @@
+#buttons{
+    display: flex;
+    
+}
+
+#screen{
+    display: flex;
+    border: 5px, solid, black;
+}

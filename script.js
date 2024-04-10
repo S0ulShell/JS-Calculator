@@ -7,6 +7,7 @@ for(i = 0; i < digits.length; i++) {
     var button = document.createElement("button");
     button.innerHTML = digits[i];
     button.className = digits[i];
+    button.addEventListener("click", console.log(digits[i]));
     var buttonContainer = document.getElementById("buttons");
     buttonContainer.appendChild(button);
   }
