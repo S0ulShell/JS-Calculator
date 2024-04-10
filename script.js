@@ -1,17 +1,26 @@
 let num1;
 let operator;
 let num2;
-let displayVal = "";
+
+let displayText = "";
 var digits = ["AC","%",7,8,9,"X",4,5,6,"+",1,2,3,"-",0,".","Del", "="];
+
+const screen = document.getElementById("screen");
+screen.addEventListener("input", () => displayText = screen.value)
 
 for(i = 0; i < digits.length; i++) {
     let digit = digits[i];
     var button = document.createElement("input");
-    button.type = "button";
+
+    //iniatializes button for css styling and referencing, type, value, name, class and Id are used.
+    //Eventhandler assigned at 
+    //creation before appending to parent
     button.value = digit;
-    button.classList.add("button")
+    button.name = digit;
     button.id = "b" + digit;
-    button.addEventListener("click", ()=> console.log(digit));
+    button.type = "button";
+    button.classList.add("button")
+    button.addEventListener("click",() => updateDisplay(button));
     var buttonContainer = document.getElementById("buttons");
     buttonContainer.appendChild(button);
   }
@@ -49,6 +58,9 @@ function operate(num1, operator, num2) {
     }
 }
 
-function updateDisplay(){
-
+function updateDisplay(button){
+    displayText += button.name;
+    console.log(displayText);
+    screen.value = displayText;
 }
+
