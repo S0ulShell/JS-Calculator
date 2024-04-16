@@ -1,79 +1,80 @@
-let num1;
+let num1 = "";
 let operator;
-let num2;
+let num2 = "";
 
-let displayText = "";
-var digits = ["AC","%",7,8,9,"X",4,5,6,"+",1,2,3,"-",0,".","Del", "="];
+let displayValue = ""
+var digits = ["AC", "%", 7, 8, 9, "X", 4, 5, 6, "+", 1, 2, 3, "-", 0, ".", "="];
 
+//grabs screen element and adds event listener to it, which stores displayed value into a varable displayText
 const screen = document.getElementById("screen");
 screen.addEventListener("input", () => displayText = screen.value)
 
-for(i = 0; i < digits.length; i++) {
+//for loop initializes buttons and adds event listeners to each button on creation
+for (i = 0; i < digits.length; i++) {
     let digit = digits[i];
     var button = document.createElement("input");
 
     //iniatializes button for css styling and referencing, type, value, name, class and Id are used.
-    //Eventhandler assigned at 
-    //creation before appending to parent
     button.value = digit;
     button.name = digit;
     button.id = "b" + digit;
     button.type = "button";
     button.classList.add("button")
-    button.addEventListener("click",() => updateDisplay(digit));
+    button.addEventListener("click", () => updateDisplay(digit));
     var buttonContainer = document.getElementById("buttons");
     buttonContainer.appendChild(button);
-  }
-
-function add(num1, num2) {
-    return num1 + num2;
 }
 
-function subtract(num1, num2){
-    return num1 - num2;
-}
+//this function is called by button event listener inorder to update what is shown on screen 
+//contains a switch check so that operators are handled appropriately instead of showing up on the display
+function updateDisplay(digit) {
+    switch (digit) {
+        case "AC":
+            screen.value = "";
+            displayValue = "";
+            num1 = "";
+            num2 = "";
+            operator = "";
+            screen.value = displayValue;
+            break;
+        case "+":
+            operator = "+"
+            if(num1) {
+                num2 = screen.value;       
+                console.log(num1, num2);
+                num1 = operate(num1, operator, num2);
+                num2 = "";
+                console.log(num1, num2);
+                displayValue = "";
+            }else{
+                num1 = displayValue;
+                displayValue = "";
+            }
+            break;
+        default:
+            displayValue += digit;
+            screen.value = displayValue;
+    }
 
-function multiply(num1, num2){
-    return num1 * num2;
-}
-
-function divide(num1, num2){
-    return num1 / num2;
 }
 
 function operate(num1, operator, num2) {
-    switch(operator){
+    let int1 = parseInt(num1);
+    let int2 = parseInt(num2);
+    switch (operator) {
         case "+":
-            add(num1, num2);
+            displayValue = int1 + int2;
+            screen.value = displayValue;
+            return displayValue.toString();
             break;
         case "-":
-            subtract(num1, num2);
+            subtract(int1, int2);
             break;
         case "*":
-            multiply(num1, num2);
+            multiply(int1, int2);
             break;
         case "/":
-            divide(num1, num2);
+            divide(int1, int2);
             break;
     }
 }
-
-function updateDisplay(digit){
-    console.log(digit);
-    switch(digit){
-        case "AC":
-            screen.value = "";
-            displayText = "";
-            screen.value = displayText;
-            break;
-        case "Del":
-            displayText = displayText.slice(0, -1);
-            screen.value = displayText;
-            break;
-        default: 
-            displayText += digit;
-            screen.value = displayText;
-    }
-    
-}
-

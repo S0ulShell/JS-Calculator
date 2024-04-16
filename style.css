@@ -1,3 +1,12 @@
+body{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 
 #calculator{
     display: flex;
@@ -17,21 +26,24 @@
     height: 50px;
     border-radius: 10px;
     margin: 3px;
+    text-align: right;
 }
 
 #buttons{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content:space-evenly;
     border: 1px solid blue;
-    width: 120px;
+    width: 130px;
     gap: 2px;
 }
 
 
+
 .button{
-    
-    border-radius: 25%;
+    flex: 0 1 40px;
+    border-radius: 10%;
     text-align: center;
     padding: 10px;
     border: none;
@@ -45,8 +57,12 @@
     background:rgb(101, 160, 96);
 }
 
-#b0n{
-    flex: 3;
+#b0{
+    width: 63px;
+}
+
+#bAC{
+    width: 96px;
 }
 
 
