@@ -60,6 +60,18 @@ function updateDisplay(digit) {
                 displayValue = "";
             }
             break;
+        case "X":
+            operator = "X"
+            if(num1) {
+                num2 = screen.value;       
+                num1 = operate(num1, operator, num2);
+                num2 = "";
+                displayValue = "";
+            }else{
+                num1 = displayValue;
+                displayValue = "";
+            }
+            break;
         case "=":
             if(num1){
                 num2 = screen.value;   
@@ -92,10 +104,10 @@ function operate(num1, operator, num2) {
             displayValue = int1 - int2;
             screen.value = displayValue;
             return displayValue.toString();
-            break;
-        case "*":
-            multiply(int1, int2);
-            break;
+        case "X":
+            displayValue = int1 * int2;
+            screen.value = displayValue;
+            return displayValue.toString();
         case "/":
             divide(int1, int2);
             break;
