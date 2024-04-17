@@ -1,4 +1,5 @@
-html, body{
+html,
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +9,7 @@ html, body{
 }
 
 
-#calculator{
+#calculator {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,30 +19,33 @@ html, body{
     border-radius: 10px;
 }
 
-#screen{
+#screen {
     display: flex;
     border: 2px solid black;
-    width: 400px;
+    width: 450px;
     height: 150px;
     border-radius: 10px;
     margin: 3px;
     text-align: right;
+    font-size: 90px;
+    font-family: 'Calculator', sans-serif;
+    background-color: rgb(228, 241, 215);
 }
 
-#buttons{
+#buttons {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     border: 1px solid blue;
-    width: 400px;
+    width: 450px;
     height: 600px;
     gap: 2px;
 }
 
 
 
-.button{
+.button {
     flex: 1 1 90px;
     border-radius: 10%;
     text-align: center;
@@ -54,17 +58,66 @@ html, body{
     font-size: 45px;
 }
 
-.button:active{
-    background:rgb(101, 160, 96);
+.button:active {
+    background: rgb(101, 160, 96);
 }
 
-#b0{
-    flex-basis: 291px;
+#b0 {
+    flex-basis: 317px;
 }
 
-#bAC{
-    background-color: bisque;
-    flex-basis: 190px;
+#bAC {
+    background-color: rgba(228, 57, 27, 0.795);
+    color: rgb(255, 207, 195);
+    flex-basis: 204px;
+}
+#bAC:active {
+    background-color: rgba(107, 24, 9, 0.795);
 }
 
+#bDel {
+    background-color: rgba(228, 57, 27, 0.795);
+    color: rgb(255, 207, 195);
+}
+#bDel:active {
+    background-color: rgba(107, 24, 9, 0.795);
+}
 
+.button[name="/"] {
+    background: rgb(79, 153, 147);
+    color: rgb(200, 242, 255);
+}
+.button:active[name="/"] {
+    background: rgb(43, 88, 85);
+}
+.button[name="+"] {
+    background: rgb(79, 153, 147);
+    color: rgb(200, 242, 255);
+}
+.button:active[name="+"] {
+    background: rgb(43, 88, 85);
+}
+
+.button[name="X"] {
+    background: rgb(79, 153, 147);
+    color: rgb(200, 242, 255);
+}
+.button:active[name="X"] {
+    background: rgb(43, 88, 85);
+}
+
+.button[name="-"] {
+    background: rgb(79, 153, 147);
+    color: rgb(200, 242, 255);
+}
+.button:active[name="-"] {
+    background: rgb(43, 88, 85);
+}
+
+.button[name="="] {
+    background: rgb(79, 153, 147);
+    color: rgb(200, 242, 255);
+}
+.button:active[name="="] {
+    background: rgb(43, 88, 85);
+}

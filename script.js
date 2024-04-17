@@ -3,7 +3,7 @@ let operator;
 let num2 = "";
 
 let displayValue = ""
-var digits = ["AC","Del", "/", 7, 8, 9, "X", 4, 5, 6, "+", 1, 2, 3, "-", 0, "="];
+var digits = ["AC", "Del", "/", 7, 8, 9, "X", 4, 5, 6, "+", 1, 2, 3, "-", 0, "="];
 
 //grabs screen element and adds event listener to it, which stores displayed value into a varable displayText
 const screen = document.getElementById("screen");
@@ -29,6 +29,7 @@ for (i = 0; i < digits.length; i++) {
 //contains a switch check so that operators are handled appropriately instead of showing up on the display
 function updateDisplay(digit) {
     switch (digit) {
+
         case "AC":
             screen.value = "";
             displayValue = "";
@@ -36,58 +37,66 @@ function updateDisplay(digit) {
             num2 = "";
             operator = "";
             break;
+
+        case "Del":
+            break;
+            
         case "+":
             operator = "+"
-            if(num1) {
-                num2 = screen.value;       
+            if (num1) {
+                num2 = screen.value;
                 num1 = operate(num1, operator, num2);
                 num2 = "";
                 displayValue = "";
-            }else{
+            } else {
                 num1 = displayValue;
                 displayValue = "";
             }
             break;
+
         case "-":
             operator = "-"
-            if(num1) {
-                num2 = screen.value;       
+            if (num1) {
+                num2 = screen.value;
                 num1 = operate(num1, operator, num2);
                 num2 = "";
                 displayValue = "";
-            }else{
+            } else {
                 num1 = displayValue;
                 displayValue = "";
             }
             break;
+
         case "X":
             operator = "X"
-            if(num1) {
-                num2 = screen.value;       
+            if (num1) {
+                num2 = screen.value;
                 num1 = operate(num1, operator, num2);
                 num2 = "";
                 displayValue = "";
-            }else{
+            } else {
                 num1 = displayValue;
                 displayValue = "";
             }
             break;
+
         case "/":
             operator = "/"
-            if(num1) {
-                num2 = screen.value;     
+            if (num1) {
+                num2 = screen.value;
                 num1 = operate(num1, operator, num2);
                 num2 = "";
                 displayValue = "";
-            }else{
+            } else {
                 num1 = displayValue;
                 displayValue = "";
             }
             break;
+
         case "=":
-            if(num1){
-                num2 = screen.value;   
-                if(num2 == "0" && operator == "/"){
+            if (num1) {
+                num2 = screen.value;
+                if (num2 == "0" && operator == "/") {
                     screen.value = "( ͠° ͟ʖ ͡°) sussy?"
                     displayValue = "";
                     num1 = "";
@@ -98,12 +107,13 @@ function updateDisplay(digit) {
                 num1 = operate(num1, operator, num2);
                 num2 = "";
                 displayValue = num1;
-                screen.value = displayValue;  
+                screen.value = displayValue;
                 num1 = "";
             }
+
         default:
             //without this, screen will display = after answer, dont know why it is accessing default case 
-            if(digit == "="){
+            if (digit == "=") {
                 break;
             }
             displayValue += digit;
@@ -129,7 +139,7 @@ function operate(num1, operator, num2) {
             screen.value = displayValue;
             return displayValue.toString();
         case "/":
-            if(int2 == 0){
+            if (int2 == 0) {
                 screen.value = "( ͠° ͟ʖ ͡°) sussy?";
                 break;
             }
