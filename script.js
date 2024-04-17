@@ -3,7 +3,7 @@ let operator;
 let num2 = "";
 
 let displayValue = ""
-var digits = ["AC", "/", 7, 8, 9, "X", 4, 5, 6, "+", 1, 2, 3, "-", 0, ".", "="];
+var digits = ["AC","Del", "/", 7, 8, 9, "X", 4, 5, 6, "+", 1, 2, 3, "-", 0, "="];
 
 //grabs screen element and adds event listener to it, which stores displayed value into a varable displayText
 const screen = document.getElementById("screen");
