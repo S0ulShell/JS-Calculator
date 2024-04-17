@@ -3,7 +3,7 @@ let operator;
 let num2 = "";
 
 let displayValue = ""
-var digits = ["AC", "%", 7, 8, 9, "X", 4, 5, 6, "+", 1, 2, 3, "-", 0, ".", "="];
+var digits = ["AC", "/", 7, 8, 9, "X", 4, 5, 6, "+", 1, 2, 3, "-", 0, ".", "="];
 
 //grabs screen element and adds event listener to it, which stores displayed value into a varable displayText
 const screen = document.getElementById("screen");
@@ -72,9 +72,29 @@ function updateDisplay(digit) {
                 displayValue = "";
             }
             break;
+        case "/":
+            operator = "/"
+            if(num1) {
+                num2 = screen.value;     
+                num1 = operate(num1, operator, num2);
+                num2 = "";
+                displayValue = "";
+            }else{
+                num1 = displayValue;
+                displayValue = "";
+            }
+            break;
         case "=":
             if(num1){
                 num2 = screen.value;   
+                if(num2 == "0" && operator == "/"){
+                    screen.value = "( ͠° ͟ʖ ͡°) sussy?"
+                    displayValue = "";
+                    num1 = "";
+                    num2 = "";
+                    operator = "";
+                    break;
+                }
                 num1 = operate(num1, operator, num2);
                 num2 = "";
                 displayValue = num1;
@@ -109,7 +129,12 @@ function operate(num1, operator, num2) {
             screen.value = displayValue;
             return displayValue.toString();
         case "/":
-            divide(int1, int2);
-            break;
+            if(int2 == 0){
+                screen.value = "( ͠° ͟ʖ ͡°) sussy?";
+                break;
+            }
+            displayValue = int1 / int2;
+            screen.value = displayValue;
+            return displayValue.toString();
     }
 }
