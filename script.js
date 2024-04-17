@@ -41,17 +41,27 @@ function updateDisplay(digit) {
             operator = "+"
             if(num1) {
                 num2 = screen.value;       
-                console.log(num1, num2);
                 num1 = operate(num1, operator, num2);
                 num2 = "";
-                console.log(num1, num2);
                 displayValue = "";
             }else{
                 num1 = displayValue;
                 displayValue = "";
             }
             break;
+        case "=":
+            if(num1){
+                num2 = screen.value;   
+                num1 = operate(num1, operator, num2);
+                num2 = "";
+                displayValue = num1;
+                screen.value = displayValue;  
+                num1 = "";
+            }
         default:
+            if(digit == "="){
+                break;
+            }
             displayValue += digit;
             screen.value = displayValue;
     }
@@ -66,7 +76,6 @@ function operate(num1, operator, num2) {
             displayValue = int1 + int2;
             screen.value = displayValue;
             return displayValue.toString();
-            break;
         case "-":
             subtract(int1, int2);
             break;
