@@ -35,10 +35,21 @@ function updateDisplay(digit) {
             num1 = "";
             num2 = "";
             operator = "";
-            screen.value = displayValue;
             break;
         case "+":
             operator = "+"
+            if(num1) {
+                num2 = screen.value;       
+                num1 = operate(num1, operator, num2);
+                num2 = "";
+                displayValue = "";
+            }else{
+                num1 = displayValue;
+                displayValue = "";
+            }
+            break;
+        case "-":
+            operator = "-"
             if(num1) {
                 num2 = screen.value;       
                 num1 = operate(num1, operator, num2);
@@ -59,6 +70,7 @@ function updateDisplay(digit) {
                 num1 = "";
             }
         default:
+            //without this, screen will display = after answer, dont know why it is accessing default case 
             if(digit == "="){
                 break;
             }
@@ -77,7 +89,9 @@ function operate(num1, operator, num2) {
             screen.value = displayValue;
             return displayValue.toString();
         case "-":
-            subtract(int1, int2);
+            displayValue = int1 - int2;
+            screen.value = displayValue;
+            return displayValue.toString();
             break;
         case "*":
             multiply(int1, int2);
