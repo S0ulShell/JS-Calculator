@@ -67,13 +67,13 @@ body {
 }
 
 #b0 {
-    flex-basis: 317px;
+    flex-basis: 321px;
 }
 
 #bAC {
     background-color: rgba(228, 57, 27, 0.795);
     color: rgb(255, 207, 195);
-    flex-basis: 204px;
+    flex-basis: 205px;
 }
 #bAC:active {
     background-color: rgba(107, 24, 9, 0.795);
@@ -83,6 +83,7 @@ body {
     background-color: rgba(228, 57, 27, 0.795);
     color: rgb(255, 207, 195);
 }
+
 #bDel:active {
     background-color: rgba(107, 24, 9, 0.795);
 }
