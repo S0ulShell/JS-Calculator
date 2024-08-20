@@ -6,4 +6,6 @@ Pressing an operator twice in a row will use whatever is on the display as the s
 
 Conatins an easter egg for those willing to find it :)
 
+https://s0ulshell.github.io/JS-Calculator/
+
 Enjoy crunching some simple numbers 
